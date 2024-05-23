@@ -21,7 +21,11 @@ class ChatApp:
         questions, answers = LoadDataset().load_conversations()
 
         # Build tokenizer using tfds for both questions and answers
-        self.tokenizer = tfds.text.SubwordTextEncoder.build_from_corpus(
+        # self.tokenizer = tfds.deprecated.text.SubwordTextEncoder.build_from_corpus(
+        #     questions + answers, target_vocab_size=2 ** 13
+        # )
+
+        self.tokenizer = tfds.features.text.SubwordTextEncoder.build_from_corpus(
             questions + answers, target_vocab_size=2 ** 13
         )
 
