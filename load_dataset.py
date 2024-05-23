@@ -2,6 +2,8 @@ import tensorflow as tf
 import os
 import re
 
+import tensorflow_datasets as tfds
+
 class LoadDataset:
 
     def __init__(self):
@@ -80,6 +82,8 @@ class LoadDataset:
                 outputs.append(self.preprocess_sentence(id2line[conversation[i + 1]]))
                 if len(inputs) >= self.MAX_SAMPLES:
                     return inputs, outputs
+
+
         return inputs, outputs
 
     # def
